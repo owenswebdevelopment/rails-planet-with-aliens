@@ -1,0 +1,11 @@
+<div class="container m-3" style="position: sticky; top: 20px;">
+  <h1 class="">Create an Alien</h1>
+  <%= simple_form_for [@planet, @alien] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :age %>
+    <%= f.input :color %>
+    <%= f.input :height %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Submit", class: 'btn btn-primary mt-3' %>
+  <% end %>
+</div>

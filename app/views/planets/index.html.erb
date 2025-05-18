@@ -1,0 +1,29 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= asset_path('solarsystem.jpg') %>');">
+  <div class="container">
+    <h1>Explore the <strong>beyond</strong> with <strong>me</strong>!</h1>
+    <p>Space is massive and endless, just like our relationships!</p>
+  </div>
+</div>
+<div class="container m-5 d-flex flex-wrap justify-content-center">
+  <div class="row g-5">
+    <h1>Planets</h1>
+    <div class="col-7">
+      <div class="cards">
+        <% @planets.each do |planet| %>
+          <div class="card-category d-flex" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= planet.photo.attached? ? cl_image_path(planet.photo.key) : image_path('planets.jpg')%>)">
+            <%= link_to planet.name, planet_path(planet), class: 'text-decoration-none text-white' %>
+            <div>
+              <%= link_to planet_path(planet), data: { turbo_method: :delete, turbo_confirm: "Delete #{planet.name}?" }, class: 'text-white' do %>
+                <i class="fa-solid fa-trash" style="color: white;"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-5 text-black">
+      <h1>Create Planet</h1>
+      <%= render 'planets/form', planet: @planet %>
+    </div>
+  </div>
+</div>

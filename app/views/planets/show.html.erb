@@ -1,0 +1,35 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= asset_path('solarsystem.jpg') %>');">
+  <div class="container text-white">
+    <h1>Welcome to <%= @planet.name%>planet!</h1>
+    <h1>Explore my <strong>features</strong> at your own <strong>risk</strong>!</h1>
+    <p>Description: <%= @planet.description%></p>
+    <p>size: <%= @planet.size%></p>
+    <p>alien_count👽: <%= @planet.alien_count%></p>
+    <p>Rings🪐: <%= @planet.rings%></p>
+    <%= link_to planets_index_path, class: 'btn btn-primary' do%>
+      <i class="fa-solid fa-earth-americas"></i>
+      <span>See Planets</span>
+    <% end %>
+  </div>
+</div>
+<div class="d-flex flex-wrap col-8 container mt-5">
+  <div class="justify-content-center" style="flex: 1">
+    <% @planet.aliens.each do |alien| %>
+      <div class="card text-center m-3 round-3 border border-4" style="width: 400px; border: 1px solid #ff5733;">
+        <div class="card-category d-flex align-items-center" style="height: 250px; background: linear-gradient(135deg, #000000, #0f0c29, #302b63, #24243e);">
+          <div class="card-body text-white text-start fs-6" style="flex: 1;">
+            <p>Name: <%= alien.name %></p>
+            <p>Age: <%= alien.age %></p>
+            <p>Height: <%= alien.height %></p>
+            <p>Color: <%= alien.color %></p>
+          </div>
+          <div class="card-img" style="flex: 2; background-size: cover; background-position: center; height: 100%; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= alien.photo.attached? ? cl_image_path(alien.photo.key) : asset_path('alienn.jpg') %>)">
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-4" style="flex-1; width: 400px;">
+    <%= render 'aliens/form', alien: @alien %>
+  </div>
+</div>

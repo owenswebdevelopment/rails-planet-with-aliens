@@ -1,0 +1,11 @@
+<div class="container text-black control bg-transparent">
+  <%= simple_form_for planet do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :size %>
+    <%= f.input :alien_count %>
+    <%= f.input :rings %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Submit", class: 'btn btn-primary mt-3' %>
+  <% end %>
+</div>
